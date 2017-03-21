@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\vadim\documents\visual studio 2015\projects\project1\project1\</FILEPATH>
+      <FILENAME>myform.h</FILENAME>
+      <LINE>271</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>Локальное объявление "pixel" скрывает объявление того же имени во внешней области. Дополнительные сведения см. в предыдущем объявлении в строке "241" файла "c:\users\vadim\documents\visual studio 2015\projects\project1\project1\myform.h".</DESCRIPTION>
+    <FUNCTION>Project1::MyForm::button4_Click</FUNCTION>
+    <DECORATED>?button4_Click@MyForm@Project1@@$$FA$AAMXP$AAVObject@System@@P$AAVEventArgs@4@@Z</DECORATED>
+    <FUNCLINE>237</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\vadim\documents\visual studio 2015\projects\project1\project1\</FILEPATH>
+        <FILENAME>myform.h</FILENAME>
+        <LINE>241</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

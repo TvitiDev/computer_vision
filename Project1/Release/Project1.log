@@ -1,0 +1,3 @@
+﻿  MyForm.cpp
+c:\users\vadim\documents\visual studio 2015\projects\project1\project1\MyForm.h(1): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+LINK : fatal error LNK1561: точка входа должна быть определена

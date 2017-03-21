@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\vadim\Documents\Visual Studio 2015\Projects\Project1\Debug\Project1.exe">
+   <Modules>
+    <Module Name="project1.exe">
+     <Messages>
+      <Message TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016" Status="Active" Created="2017-03-19 04:58:05Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Error">Добавьте атрибут AssemblyVersion в 'Project1.exe'.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="Project1">
+       <Types>
+        <Type Name="MyForm" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="image1" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2017-03-19 04:58:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'MyForm' содержит поле 'MyForm::image1' типа IDisposable: 'Bitmap'. Замените метод Dispose для 'MyForm' на вызов Dispose или Close по этому полю.</Issue>
+            </Message>
+            <Message Id="image2" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2017-03-19 04:58:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'MyForm' содержит поле 'MyForm::image2' типа IDisposable: 'Bitmap'. Замените метод Dispose для 'MyForm' на вызов Dispose или Close по этому полю.</Issue>
+            </Message>
+            <Message Id="image3" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2017-03-19 04:58:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'MyForm' содержит поле 'MyForm::image3' типа IDisposable: 'Bitmap'. Замените метод Dispose для 'MyForm' на вызов Dispose или Close по этому полю.</Issue>
+            </Message>
+            <Message Id="image4" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2017-03-19 04:58:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">'MyForm' содержит поле 'MyForm::image4' типа IDisposable: 'Bitmap'. Замените метод Dispose для 'MyForm' на вызов Dispose или Close по этому полю.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>Следует высвобождать высвобождаемые поля</Name>
+   <Description>Если типу, реализующему IDisposable, принадлежат поля, которые также реализуют IDisposable, реализация Dispose() инкапсулирующего типа должна вызывать Dispose() по каждому высвобождаемому полю.</Description>
+   <Resolution Name="Default">{0} содержит поле {1} типа IDisposable: {2}. Замените метод Dispose для {0} на вызов Dispose или Close по этому полю.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016">
+   <Name>Пометьте сборки с помощью AssemblyVersionAttribute</Name>
+   <Description>Сборки должны использовать номера версий. Номер версии считается частью идентификационных данных сборки. Отслеживание версий обеспечивается при помощи атрибута AssemblyVersion.</Description>
+   <Resolution Name="Default">Добавьте атрибут AssemblyVersion в {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182155.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
+ </Localized>
+</FxCopReport>

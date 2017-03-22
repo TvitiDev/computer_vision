@@ -1,26 +1,7 @@
-﻿  lab1.cpp
-lab1.cpp(43): warning C4244: инициализация: преобразование "double" в "unsigned int", возможна потеря данных
-lab1.cpp(111): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(112): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(120): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(161): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(162): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(170): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(199): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(200): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(203): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(215): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(244): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(245): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(248): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(261): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(265): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
-lab1.cpp(291): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  MyForm.cpp
+﻿  MyForm.cpp
 c:\users\vadim\documents\visual studio 2015\projects\project1\project1\MyForm.h(1): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-c:\users\vadim\documents\visual studio 2015\projects\project1\project1\MyForm.h(286): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  Создание кода...
-  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+c:\users\vadim\documents\visual studio 2015\projects\project1\project1\MyForm.h(189): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+c:\users\vadim\documents\visual studio 2015\projects\project1\project1\MyForm.h(211): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
   lab1.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
   Project1.vcxproj -> C:\Users\vadim\Documents\Visual Studio 2015\Projects\Project1\Debug\Project1.exe
   Project1.vcxproj -> C:\Users\vadim\Documents\Visual Studio 2015\Projects\Project1\Debug\Project1.pdb (Partial PDB)

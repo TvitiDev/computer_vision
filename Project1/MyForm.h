@@ -137,7 +137,7 @@ namespace Project1 {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(122, 26);
 			this->button5->TabIndex = 6;
-			this->button5->Text = L"button5";
+			this->button5->Text = L"Гаусс + Собель";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
@@ -166,122 +166,47 @@ namespace Project1 {
 		pictureBox1->Image = image1;
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		image2 = gcnew Bitmap(image1->Width, image1->Height);
-		
-		for (int x = 0; x < image1->Width; x++) {
-			for (int y = 0; y < image1->Height; y++) {
-				Color^ pixel = image1->GetPixel(x, y);
-				int ColorMid = (int) (pixel->R * 0.299 + pixel->G * 0.587 + pixel->B * 0.114);
-				if (ColorMid > 255) {
-					ColorMid = 255;
-				}
-
-				Color^ pixel2 = Color::FromArgb(ColorMid, ColorMid, ColorMid);
-
-				image2->SetPixel(x, y, *pixel2);
-			}
-		}
-
-		pictureBox1->Image = image2;
+		lab1 Img = *(new lab1("e46_2.jpg"));
+		pictureBox1->Image = Img.getImg();
 	}
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		image4 = gcnew Bitmap(image2->Width, image2->Height);
+		lab1 Img = *(new lab1("e46_2.jpg"));
 
-		int X[9] = { -1, 0, 1, -2, 0, 2, -1, 0, 1 };
-		int Y[9] = { -1, -2, -1, 0, 0, 0, 1, 2, 1 };
-		Color* pixel[9];
-		int Ex = 0;
-		Color^ pixel2;
+		double X[9] = { -1, 0, 1, -2, 0, 2, -1, 0, 1 };
+		double Y[9] = { -1, -2, -1, 0, 0, 0, 1, 2, 1 };
 
-		int Gx = 0,
-			Gy = 0,
-			G;
+		// Преобразование Собеля
+		lab1 Img3 = Img.svertka(3, X, Y, lab1::TYPE_BORDER_WRAPPING, lab1::SVERTKA);
 
-		for (int x = 1; x < image2->Width - 1; x++) {
-			for (int y = 1; y < image2->Height - 1; y++) {
-
-				pixel[0] = &image2->GetPixel(x-1, y-1);
-				pixel[1] = &image2->GetPixel(x, y-1);
-				pixel[2] = &image2->GetPixel(x+1, y-1);
-				pixel[3] = &image2->GetPixel(x-1, y);
-				pixel[4] = &image2->GetPixel(x, y);
-				pixel[5] = &image2->GetPixel(x+1, y);
-				pixel[6] = &image2->GetPixel(x-1, y+1);
-				pixel[7] = &image2->GetPixel(x, y+1);
-				pixel[8] = &image2->GetPixel(x+1, y+1);
-				
-				Gx = Gy = 0;
-
-				for (int i = 0; i < 9; i++) {
-					Gx += pixel[i]->R * X[i];
-					Gy += pixel[i]->R * Y[i];
-				}
-
-				G = (int) Math::Sqrt(Math::Pow(Gx, 2) + Math::Pow(Gy, 2));
-
-				if (G > 255) {
-					G = 255;
-					Ex += 1;
-				}
-
-				pixel2 = Color::FromArgb(G, G, G);
-				image4->SetPixel(x, y, *pixel2);
-				delete pixel2;
-			}
-		}
-
-		label1->Text = Convert::ToString(Ex);
-		pictureBox1->Image = image4;
+		pictureBox1->Image = Img3.getImg();
 	}
+
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-		image3 = gcnew Bitmap(image2->Width, image2->Height);
 
-		int X[9] = { 1, 2, 1, 2, 4, 2, 1, 2, 1 };
-		Color* pixel[9];
-		int Ex = 0;
+		lab1 Img = *(new lab1("e46_2.jpg"));
+		double static const a = 1;
+		int static const N = a * 6 + 1;
+		int N2 = (int)N / 2;
+		double *Gauss = new double[N];
 
-		for (int x = 1; x < image2->Width - 1; x++) {
-			for (int y = 1; y < image2->Height - 1; y++) {
+		double r = 0;
 
-				pixel[0] = &image2->GetPixel(x - 1, y - 1);
-				pixel[1] = &image2->GetPixel(x, y - 1);
-				pixel[2] = &image2->GetPixel(x + 1, y - 1);
-				pixel[3] = &image2->GetPixel(x - 1, y);
-				pixel[4] = &image2->GetPixel(x, y);
-				pixel[5] = &image2->GetPixel(x + 1, y);
-				pixel[6] = &image2->GetPixel(x - 1, y + 1);
-				pixel[7] = &image2->GetPixel(x, y + 1);
-				pixel[8] = &image2->GetPixel(x + 1, y + 1);
-
-				int Gx = 0,
-					G;
-
-				for (int i = 0; i < 9; i++) {
-					Gx += pixel[i]->R * X[i];
-				}
-
-				G = Gx;
-				
-				if (G > 255) {
-					G = 255;
-					Ex += 1;
-				}
-
-				Color^ pixel = Color::FromArgb(G, G, G);
-				image3->SetPixel(x, y, *pixel);
-			}
+		for (double i = 0, j = -1 * N2; i < N; j++, i++) {
+			r += Gauss[(int)i] = (pow(M_E, ((-1 * j * j) / (2 * a * a))) / (sqrt(2 * M_PI) * a));
 		}
 
-		label1->Text = Convert::ToString(Ex);
-		pictureBox1->Image = image3;
+		label1->Text = System::Convert::ToString(r);
 
+		// Гаусс
+		lab1 Img2 = Img.svertka(N, Gauss, Gauss, lab1::TYPE_BORDER_WRAPPING, lab1::SEPAR);
+		
+		pictureBox1->Image = Img2.getImg();
 	}
 
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		
-		lab1^ Img = gcnew lab1();
-		int *imgPoint = Img->loadImage("e46_2.jpg");
+		lab1 Img = *(new lab1("e46_2.jpg"));	
 		double static const a = 1;
 		int static const N = a * 6 + 1;
 		int N2 = (int) N / 2;
@@ -296,15 +221,15 @@ namespace Project1 {
 		label1->Text = System::Convert::ToString(r);
 
 		// Гаусс
-		int *imgPoint2 = Img->svertka(imgPoint, N, Gauss, Gauss, lab1::TYPE_BORDER_WITHOUT, lab1::SEPAR);
+		lab1 Img2 = Img.svertka(N, Gauss, Gauss, lab1::TYPE_BORDER_WRAPPING, lab1::SEPAR);
 
 		double X[9] = { -1, 0, 1, -2, 0, 2, -1, 0, 1 };
 		double Y[9] = { -1, -2, -1, 0, 0, 0, 1, 2, 1 };
 
 		// Преобразование Собеля
-		int *imgPoint3 = Img->svertka(imgPoint2, 3, X, Y, lab1::TYPE_BORDER_WRAPPING, lab1::SVERTKA);
+		lab1 Img3 = Img2.svertka(3, X, Y, lab1::TYPE_BORDER_WRAPPING, lab1::SVERTKA);
 
-		pictureBox1->Image = Img->getImg(imgPoint3);
+		pictureBox1->Image = Img3.getImg();
 	}
 };
 }

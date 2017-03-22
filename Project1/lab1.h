@@ -6,12 +6,14 @@
 using namespace System::Drawing;
 using namespace System;
 
-ref class lab1
+class lab1
 {
 public:
 	
 	int widthImg;
 	int heightImg;
+
+	double *imagePoint;
 
 	/* Свертка ядром */
 	static const int SVERTKA = 1;
@@ -32,27 +34,26 @@ public:
 	/* Зеркалирование пикселей */
 	static const int TYPE_BORDER_MIRROR = 4;
 
-	// конструктор
-	lab1();	
+	// конструктор. загрузка оригинала изображения
+	lab1(String^);
 
-	// загрузка оригинала изображения
-	int *lab1::loadImage(String^);
-
-	// преобразование собеля
-	//int *lab1::sobel(int);
-
-	// свертка
-	int *lab1::svertka(int *imgPoint, int size, double X[], double Y[], int, int);
-
-	Bitmap ^lab1::getImg(int *);
-
-	int lab1::borderWithout(int *, int, int, double[], double[], int, int);
-
-	int lab1::borderBlack(int *, int, int, double[], double[], int, int);
-
-	int lab1::borderWrapping(int *, int, int, double[], double[], int, int);
+	// конструктор. загрузка оригинала изображения
+	lab1(double *, int, int);
 	
-	int lab1::borderMirror(int *, int, int, double[], double[], int, int);
+	// свертка
+	lab1 lab1::svertka(int size, double X[], double Y[], int, int);
+
+	Bitmap ^lab1::getImg();
+
+private :
+
+	double lab1::borderWithout(int, int, double[], double[], int, int);
+
+	double lab1::borderBlack(int, int, double[], double[], int, int);
+
+	double lab1::borderWrapping(int, int, double[], double[], int, int);
+	
+	double lab1::borderMirror(int, int, double[], double[], int, int);
 	
 
 };
